@@ -7,11 +7,9 @@ x-logging: &default-logging
 services:
   server:
     image: judge0/judge0:1.13.1
-    ports:
-      - "2358:2358"
     privileged: true
-    restart: always
     environment:
+      - SERVICE_FQDN_SERVER_2358
       - REDIS_HOST=${COOLIFY_REDIS_HOST:-redis}
       - REDIS_PASSWORD=${SERVICE_PASSWORD_REDIS}
       - POSTGRES_HOST=${COOLIFY_POSTGRES_HOST:-db}
@@ -25,7 +23,6 @@ services:
     image: judge0/judge0:1.13.1
     command: ["./scripts/workers"]
     privileged: true
-    restart: always
     environment:
       - REDIS_HOST=${COOLIFY_REDIS_HOST:-redis}
       - REDIS_PASSWORD=${SERVICE_PASSWORD_REDIS}
@@ -38,7 +35,6 @@ services:
 
   db:
     image: postgres:16.2
-    restart: always
     environment:
       - POSTGRES_DB=${COOLIFY_POSTGRES_DB:-judge0}
       - POSTGRES_USER=${COOLIFY_POSTGRES_USER:-judge0}
