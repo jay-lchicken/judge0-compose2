@@ -1,8 +1,3 @@
-# documentation: https://ce.judge0.com/
-# slogan: Judge0, where code happens.
-# tags: code,run,compute
-# logo: svgs/judge0.png
-# port: 2358
 
 x-logging: &default-logging
   logging:
@@ -18,11 +13,11 @@ services:
     privileged: true
     restart: always
     environment:
-      - REDIS_HOST=${COOLIFY_REDIS_HOST:redis}
+      - REDIS_HOST=${COOLIFY_REDIS_HOST:-redis}
       - REDIS_PASSWORD=${SERVICE_PASSWORD_REDIS}
-      - POSTGRES_HOST=${COOLIFY_POSTGRES_HOST:db}
-      - POSTGRES_DB=${COOLIFY_POSTGRES_DB:judge0}
-      - POSTGRES_USER=${COOLIFY_POSTGRES_USER:judge0}
+      - POSTGRES_HOST=${COOLIFY_POSTGRES_HOST:-db}
+      - POSTGRES_DB=${COOLIFY_POSTGRES_DB:-judge0}
+      - POSTGRES_USER=${COOLIFY_POSTGRES_USER:-judge0}
       - POSTGRES_PASSWORD=${SERVICE_PASSWORD_POSTGRES}
       - AUTHZ_TOKEN=${SERVICE_PASSWORD_AUTHZ}
     <<: *default-logging
@@ -33,11 +28,11 @@ services:
     privileged: true
     restart: always
     environment:
-      - REDIS_HOST=${COOLIFY_REDIS_HOST:redis}
+      - REDIS_HOST=${COOLIFY_REDIS_HOST:-redis}
       - REDIS_PASSWORD=${SERVICE_PASSWORD_REDIS}
-      - POSTGRES_HOST=${COOLIFY_POSTGRES_HOST:db}
-      - POSTGRES_DB=${COOLIFY_POSTGRES_DB:judge0}
-      - POSTGRES_USER=${COOLIFY_POSTGRES_USER:judge0}
+      - POSTGRES_HOST=${COOLIFY_POSTGRES_HOST:-db}
+      - POSTGRES_DB=${COOLIFY_POSTGRES_DB:-judge0}
+      - POSTGRES_USER=${COOLIFY_POSTGRES_USER:-judge0}
       - POSTGRES_PASSWORD=${SERVICE_PASSWORD_POSTGRES}
       - AUTHZ_TOKEN=${SERVICE_PASSWORD_AUTHZ}
     <<: *default-logging
@@ -46,8 +41,8 @@ services:
     image: postgres:16.2
     restart: always
     environment:
-      - POSTGRES_DB=${COOLIFY_POSTGRES_DB:judge0}
-      - POSTGRES_USER=${COOLIFY_POSTGRES_USER:judge0}
+      - POSTGRES_DB=${COOLIFY_POSTGRES_DB:-judge0}
+      - POSTGRES_USER=${COOLIFY_POSTGRES_USER:-judge0}
       - POSTGRES_PASSWORD=${SERVICE_PASSWORD_POSTGRES}
     volumes:
       - data:/var/lib/postgresql/data/
