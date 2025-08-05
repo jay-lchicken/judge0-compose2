@@ -33,7 +33,7 @@ services:
     privileged: true
     restart: always
     environment:
-       - REDIS_HOST=${COOLIFY_REDIS_HOST:redis}
+      - REDIS_HOST=${COOLIFY_REDIS_HOST:redis}
       - REDIS_PASSWORD=${SERVICE_PASSWORD_REDIS}
       - POSTGRES_HOST=${COOLIFY_POSTGRES_HOST:db}
       - POSTGRES_DB=${COOLIFY_POSTGRES_DB:judge0}
