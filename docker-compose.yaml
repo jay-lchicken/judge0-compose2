@@ -12,7 +12,7 @@ x-logging: &default-logging
 services:
   server:
     image: judge0/judge0:1.13.1
-    port: 
+    ports: 
       - "2358:2358"
     privileged: true
     environment:
