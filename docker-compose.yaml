@@ -14,7 +14,7 @@ services:
     image: judge0/judge0:1.13.1
     privileged: true
     environment:
-      - SERVICE_FQDN_SERVER_2358
+      - SERVICE_FQDN_JUDGE0_2358
       - REDIS_HOST=${COOLIFY_REDIS_HOST:-redis}
       - REDIS_PASSWORD=${SERVICE_PASSWORD_REDIS}
       - POSTGRES_HOST=${COOLIFY_POSTGRES_HOST:-db}
