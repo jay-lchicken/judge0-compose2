@@ -22,6 +22,10 @@ services:
       - POSTGRES_USER=${COOLIFY_POSTGRES_USER:-judge0}
       - POSTGRES_PASSWORD=${SERVICE_PASSWORD_POSTGRES}
       - AUTHZ_TOKEN=${SERVICE_PASSWORD_AUTHZ}
+    healthcheck:
+      test: curl -fs http://127.0.0.1:2358/workers > /dev/null
+      interval: 5s
+      retries: 10
     <<: *default-logging
 
   worker:
